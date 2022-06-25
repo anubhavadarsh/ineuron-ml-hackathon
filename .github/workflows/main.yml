@@ -1,32 +1,16 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-
-
-name: Ineuron
-
-on:
+name: Deployon:
   push:
-    branches: [master]
-
-  workflow_dispatch:
-
-jobs:
+    branches:
+      - masterjobs:
   build:
-
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: backend-main
-# 
     steps:
-    - uses: actions/checkout@v3
-    - uses: akhileshns/heroku-deploy@v3.12.12 #
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12 #
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
+
 
